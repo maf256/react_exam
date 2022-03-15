@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTasks, useTasksDispatch } from '../TasksContext.js';
 
+import styled from 'styled-components'
 
 export default function Form() {
       const { currentUser } = useTasks()
@@ -30,7 +30,7 @@ export default function Form() {
       return (
             <FormContainer>
                   <From onSubmit={handleSubmit}>
-                        <label>Dislay Name:
+                        <label>Display Name:
                               <input
                                     type="text"
                                     name="name"
