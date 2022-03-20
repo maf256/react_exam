@@ -1,12 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useTasks, useTasksDispatch } from '../TasksContext.js';
+// import { useTasks, useTasksDispatch } from '../TasksContext.js';
 
 import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux';
+import { addAction } from '../utils/redux/user/UsersDetailsSlice';
 
 export default function Form() {
-      const { currentUser } = useTasks()
+      // const { currentUser } = useTasks()
+      const currentUser = useSelector(state => state.usersDetails.currentUser);
+
       const [formData, setFormData] = useState(currentUser)
-      const dispatch = useTasksDispatch()
+      // const dispatch = useTasksDispatch()
+      const dispatch = useDispatch();
       const idCounter = useRef(1)
 
       useEffect(() => {
@@ -20,10 +25,11 @@ export default function Form() {
       const handleSubmit = (e) => {
             e.preventDefault();
             const id = formData.id ? formData.id : idCounter.current++
-            dispatch({
-                  type: 'add',
-                  user: { ...formData, id }
-            })
+            // dispatch({
+            //       type: 'add',
+            //       user: { ...formData, id }
+            // })
+            dispatch(addAction({ ...formData, id }));
             setFormData({ name: "", email: "", username: "", password: "" });
       };
 
