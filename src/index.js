@@ -11,13 +11,12 @@ ReactDOM.render(
   <React.StrictMode>
     {/* <TasksProvider> */}
     <Provider store={store}>
-      console.log('====================================');
-      console.log('Powered by Redux');
-      console.log('====================================');
       <App />
+      {
+        console.log('Powered by Redux')
+      }
     </Provider>
     {/* </TasksProvider> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
-
