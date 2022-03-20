@@ -1,17 +1,24 @@
 import styled from 'styled-components'
-import { useTasks, useTasksDispatch } from '../TasksContext.js';
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { editAction, removeAction } from '../utils/redux/user/UsersDetailsSlice';
+// import { useTasks, useTasksDispatch } from '../TasksContext.js';
 
 export default function UserList() {
-    const { users } = useTasks()
-    const dispatch = useTasksDispatch()
+    // const { users } = useTasks()
+    const users = useSelector(state => state.usersDetails.users)
+    // const dispatch = useTasksDispatch()
+    const dispatch = useDispatch();
 
     const handleRemove = (e, user) => {
         e.stopPropagation();
-        dispatch({ type: 'delete', user })
+        // dispatch({ type: 'delete', user })
+        dispatch(removeAction(user));
     }
 
     const handleOnClick = (e, user) => {
-        dispatch({ type: 'edit', user })
+        // dispatch({ type: 'edit', user })
+        dispatch(editAction(user));
     }
 
     return (
