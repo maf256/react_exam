@@ -11,6 +11,9 @@ ReactDOM.render(
   <React.StrictMode>
     {/* <TasksProvider> */}
     <Provider store={store}>
+      console.log('====================================');
+      console.log('Powered by Redux');
+      console.log('====================================');
       <App />
     </Provider>
     {/* </TasksProvider> */}
